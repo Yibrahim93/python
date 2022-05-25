@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Edit a show</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+<h1> Edit {{show.title}} </h1>
+<a href="/dashboard">TV Shows</a>
+<a href="/logout">Log out</a>
+<form action="/show/{{ show.id }}/update" method="POST">
+    {% with messages = get_flashed_messages(category_filter=["show"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div>
+        <label>Title:</label>
+        <input type= "text" name="title" value="{{show.title}}">
+    </div> 
+    <div>
+        <label>Network:</label>
+        <input type= "text" name="network" value="{{show.network}}">
+    </div>
+    <div>
+        <label>Release Date:</label>
+        <input type= "date" name="release_date" value="{{show.release_date}}">
+    </div>
+    <div>
+        <label>Description:</label>
+        <div><textarea name="description" value="{{show.description}}"cols="50" rows="5"></textarea></div>
+    </div>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

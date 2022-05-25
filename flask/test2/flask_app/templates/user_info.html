@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>User info</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <p>Username: {{session.user_name}}</p>
+    <p>Email: {{session.email}}</p>
+
+    <a href="/players/clear">Clear player data</a>
+    <a href="/dashboard">Go back to Dashboard</a>
+</body>
+</html>

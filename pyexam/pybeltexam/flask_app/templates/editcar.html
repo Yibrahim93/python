@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Edit a car</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+<h1> Edit {{car.model}} </h1>
+<a href="/dashboard">Dashboard</a>
+<a href="/logout">Log out</a>
+<form action="/edit/{{car.id}}" method="POST">
+    {% with messages = get_flashed_messages(category_filter=["car"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div>
+        <label>Price:</label>
+        <input type= "number" name="email">
+    </div> 
+    <div>
+        <label>Model:</label>
+        <input type= "text" name="password">
+    </div>
+    <div>
+        <label>Make:</label>
+        <input type= "text" name="email">
+    </div> 
+    <div>
+        <label>Year:</label>
+        <input type= "date" name="password">
+    </div>
+    <div>
+        <label>Description:</label>
+        <div><textarea name="description" cols="50" rows="5"></textarea></div>
+    </div>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>
